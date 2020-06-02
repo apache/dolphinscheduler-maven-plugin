@@ -1,4 +1,4 @@
-This is a maven plugin for DolphinScheduler , It has tow functions:
+This is a maven plugin for DolphinScheduler , It has three functions:
 
 1. It is allowed to add <packaging>dolphinscheduler-plugin</packaging> to the pom file. If <packaging>dolphinscheduler-plugin</packaging> is added to the pom file, the DolphinScheduler service will load this model as a DolphinScheduler plugin.
 
