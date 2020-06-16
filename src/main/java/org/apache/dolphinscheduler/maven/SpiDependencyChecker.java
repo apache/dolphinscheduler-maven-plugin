@@ -77,7 +77,7 @@ public class SpiDependencyChecker extends AbstractMojo {
             return;
         }
 
-        Set<String> spiDependencies = getSpiDependencies();
+        Set<String> spiDependencies = getTheSpiDependencies();
         getLog().debug("SPI dependencies: " + spiDependencies);
 
         for (Artifact artifact : mavenProject.getArtifacts()) {
@@ -102,7 +102,7 @@ public class SpiDependencyChecker extends AbstractMojo {
         }
     }
 
-    private Set<String> getSpiDependencies()
+    private Set<String> getTheSpiDependencies()
             throws MojoExecutionException
     {
         return getArtifactDependencies(getSpiDependency())
@@ -117,8 +117,9 @@ public class SpiDependencyChecker extends AbstractMojo {
             throws MojoExecutionException
     {
         try {
-            Dependency dependency = new Dependency(aetherArtifact(artifact), null);
-            return repositorySystem.collectDependencies(repositorySession, new CollectRequest(dependency, null));
+            org.eclipse.aether.artifact.Artifact artifact1 = aetherArtifact(artifact);
+            Dependency projectDependency = new Dependency(artifact1, null);
+            return repositorySystem.collectDependencies(repositorySession, new CollectRequest(projectDependency, null));
         }
         catch (DependencyCollectionException e) {
             throw new MojoExecutionException("Failed to resolve dependencies.", e);
@@ -129,22 +130,24 @@ public class SpiDependencyChecker extends AbstractMojo {
             throws MojoExecutionException
     {
         for (Artifact artifact : mavenProject.getArtifacts()) {
-            if (isSpiArtifact(artifact)) {
-                if (!"provided".equals(artifact.getScope())) {
-                    throw new MojoExecutionException(String.format("DolphinScheduler plugin dependency %s must have scope 'provided'.", spiName()));
-                }
-                return artifact;
+            if (!isSpiArtifact(artifact)) {
+                continue;
             }
+
+            if (!"provided".equals(artifact.getScope())) {
+                throw new MojoExecutionException(String.format("DolphinScheduler plugin dependency %s must have scope 'provided'.", spiName()));
+            }
+            return artifact;
         }
         throw new MojoExecutionException(String.format("DolphinScheduler plugin must depend on %s.", spiName()));
     }
 
     private boolean isSpiArtifact(Artifact artifact)
     {
-        return spiGroupId.equals(artifact.getGroupId()) &&
-                spiArtifactId.equals(artifact.getArtifactId()) &&
-                "jar".equals(artifact.getType()) &&
-                (artifact.getClassifier() == null);
+        return spiGroupId.equals(artifact.getGroupId())
+                && spiArtifactId.equals(artifact.getArtifactId())
+                && "jar".equals(artifact.getType())
+                && (artifact.getClassifier() == null);
     }
 
     private String spiName()
