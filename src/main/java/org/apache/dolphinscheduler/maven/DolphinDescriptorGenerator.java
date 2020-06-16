@@ -1,3 +1,20 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.apache.dolphinscheduler.maven;
 
 import org.apache.maven.artifact.Artifact;
@@ -45,15 +62,19 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
     public void execute()
             throws MojoExecutionException
     {
-        File servicesFile = new File(servicesDirectory, pluginClassName);
+        File spiServicesFile = new File(servicesDirectory, pluginClassName);
 
         // If users have already provided their own service file then we will not overwrite it
-        if (servicesFile.exists()) {
+        if (spiServicesFile.exists()) {
             return;
         }
 
-        if (!servicesFile.getParentFile().exists()) {
-            mkdirs(servicesFile.getParentFile());
+        if (!spiServicesFile.getParentFile().exists()) {
+            File file = spiServicesFile.getParentFile();
+            file.mkdirs();
+            if (!file.isDirectory()) {
+                throw new MojoExecutionException(String.format("%n%nFailed to create directory: %s", file));
+            }
         }
 
         List<Class<?>> pluginImplClasses;
@@ -78,8 +99,8 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
 
         try {
             Class<?> pluginClass = pluginImplClasses.get(0);
-            Files.write(servicesFile.toPath(), pluginClass.getName().getBytes(UTF_8));
-            getLog().info(String.format("Wrote %s to %s", pluginClass.getName(), servicesFile));
+            Files.write(spiServicesFile.toPath(), pluginClass.getName().getBytes(UTF_8));
+            getLog().info(String.format("Wrote %s to %s", pluginClass.getName(), spiServicesFile));
         }
         catch (IOException e) {
             throw new MojoExecutionException("Failed to write services JAR file.", e);
@@ -89,17 +110,17 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
     private URLClassLoader createCLFromCompileTimeDependencies()
             throws Exception
     {
-        List<URL> urls = new ArrayList<>();
-        urls.add(classesDirectory.toURI().toURL());
+        List<URL> classesUrls = new ArrayList<>();
+        classesUrls.add(classesDirectory.toURI().toURL());
         for (Artifact artifact : project.getArtifacts()) {
             if (artifact.getFile() != null) {
-                urls.add(artifact.getFile().toURI().toURL());
+                classesUrls.add(artifact.getFile().toURI().toURL());
             }
         }
-        return new URLClassLoader(urls.toArray(new URL[0]));
+        return new URLClassLoader(classesUrls.toArray(new URL[0]));
     }
 
-    private List<Class<?>> findPluginImplClasses(URLClassLoader searchRealm)
+    private List<Class<?>> findPluginImplClasses(URLClassLoader urlClassLoader)
             throws IOException, MojoExecutionException
     {
         List<Class<?>> implementations = new ArrayList<>();
@@ -107,8 +128,8 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
         for (String classPath : classes) {
             String className = classPath.substring(0, classPath.length() - 6).replace(File.separatorChar, '.');
             try {
-                Class<?> pluginClass = searchRealm.loadClass(pluginClassName);
-                Class<?> clazz = searchRealm.loadClass(className);
+                Class<?> pluginClass = urlClassLoader.loadClass(pluginClassName);
+                Class<?> clazz = urlClassLoader.loadClass(className);
                 if (isImplementation(clazz, pluginClass)) {
                     implementations.add(clazz);
                 }
@@ -118,16 +139,6 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
             }
         }
         return implementations;
-    }
-
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    private static void mkdirs(File file)
-            throws MojoExecutionException
-    {
-        file.mkdirs();
-        if (!file.isDirectory()) {
-            throw new MojoExecutionException(String.format("%n%nFailed to create directory: %s", file));
-        }
     }
 
     private static boolean isImplementation(Class<?> clazz, Class<?> pluginClass)
