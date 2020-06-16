@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Mojo that generates the service descriptor JAR for DolphinScheduler plugins.
+ * create the spi service file
  */
 @Mojo(name = "generate-dolphin-service-descriptor",
         defaultPhase = LifecyclePhase.PACKAGE,
