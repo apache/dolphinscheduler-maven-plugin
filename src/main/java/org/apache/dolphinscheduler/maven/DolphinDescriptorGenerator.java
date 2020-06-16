@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * create the spi service file
+ * create the spi services file
  */
 @Mojo(name = "generate-dolphin-service-descriptor",
         defaultPhase = LifecyclePhase.PACKAGE,
@@ -83,10 +83,11 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
             pluginImplClasses = findPluginImplClasses(loader);
         }
         catch (Exception e) {
-            throw new MojoExecutionException(String.format("%n%nError scanning for classes implementing %s.", pluginClassName), e);
+            throw new MojoExecutionException(String.format("%n%nError for find the classes that implements %s.", pluginClassName), e);
         }
+
         if (pluginImplClasses.isEmpty()) {
-            throw new MojoExecutionException(String.format("%n%nYou must have at least one class that implements %s.", pluginClassName));
+            throw new MojoExecutionException(String.format("%n%nNot find classes implements %s, You must have at least one class that implements %s.", pluginClassName, pluginClassName));
         }
 
         if (pluginImplClasses.size() > 1) {
@@ -94,7 +95,7 @@ public class DolphinDescriptorGenerator extends AbstractMojo {
             for (Class<?> pluginClass : pluginImplClasses) {
                 sb.append(pluginClass.getName()).append(LS_ALIAS);
             }
-            throw new MojoExecutionException(String.format("%n%nYou have more than one class that implements %s:%n%n%s%nYou can only have one per plugin project.", pluginClassName, sb));
+            throw new MojoExecutionException(String.format("%n%nFound more than one class that implements %s:%n%n%s%nYou can only have one per plugin project.", pluginClassName, sb));
         }
 
         try {
