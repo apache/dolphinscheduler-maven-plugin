@@ -17,27 +17,27 @@
     <url>http://dolphinscheduler.apache.org</url>
     <description>Dolphin Scheduler Maven Plugin provides a packing and lifecycle for DolphinScheduler plugins
     </description>
-    <!--<licenses>-->
-        <!--<license>-->
-            <!--<name>Apache License 2.0</name>-->
-            <!--<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>-->
-            <!--<distribution>repo</distribution>-->
-        <!--</license>-->
-    <!--</licenses>-->
-    <!--<scm>-->
-        <!--<connection>scm:git:https://github.com/apache/incubator-dolphinscheduler-maven-plugin.git</connection>-->
-        <!--<developerConnection>scm:git:https://github.com/apache/incubator-dolphinscheduler-maven-plugin.git</developerConnection>-->
-        <!--<url>https://github.com/apache/incubator-dolphinscheduler-maven-plugin</url>-->
-        <!--<tag>HEAD</tag>-->
-    <!--</scm>-->
-    <!--<mailingLists>-->
-        <!--<mailingList>-->
-            <!--<name>DolphinScheduler Developer List</name>-->
-            <!--<post>dev@dolphinscheduler.incubator.apache.org</post>-->
-            <!--<subscribe>dev-subscribe@dolphinscheduler.incubator.apache.org</subscribe>-->
-            <!--<unsubscribe>dev-unsubscribe@dolphinscheduler.incubator.apache.org</unsubscribe>-->
-        <!--</mailingList>-->
-    <!--</mailingLists>-->
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/apache/incubator-dolphinscheduler-maven-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/apache/incubator-dolphinscheduler-maven-plugin.git</developerConnection>
+        <url>https://github.com/apache/incubator-dolphinscheduler-maven-plugin</url>
+        <tag>HEAD</tag>
+    </scm>
+    <mailingLists>
+        <mailingList>
+            <name>DolphinScheduler Developer List</name>
+            <post>dev@dolphinscheduler.incubator.apache.org</post>
+            <subscribe>dev-subscribe@dolphinscheduler.incubator.apache.org</subscribe>
+            <unsubscribe>dev-unsubscribe@dolphinscheduler.incubator.apache.org</unsubscribe>
+        </mailingList>
+    </mailingLists>
 
     <properties>
         <mavenVersion>3.2.3</mavenVersion>
