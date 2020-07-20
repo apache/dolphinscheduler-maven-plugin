@@ -6,6 +6,8 @@
 
 3. Automatically check DolphinScheduler's maven dependency. Especially the dependencies used by plugins.
 
+
+
 ### Why we need this maven plugin?
 
 If we are running on the server deployment. Because the plug-ins are in the corresponding plug-in directory, and the plug-in jar package has the corresponding META-INF/services, there is no problem. 
