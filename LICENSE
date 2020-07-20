@@ -201,7 +201,7 @@
    limitations under the License.
 
 ========================================================================
-Apache DolphinScheduler Subcomponents:
+Apache DolphinScheduler(Incubating) Maven Plugin Subcomponents:
 
 The Apache DolphinScheduler project contains subcomponents with separate copyright
 notices and license terms. Your use of the source code for the these
