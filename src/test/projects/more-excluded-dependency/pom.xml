@@ -20,18 +20,12 @@
         </dependency>
 
         <!-- this dependency is not part of the SPI; it can be provided because it's individually excluded from the check -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>24.1.1-jre</version>
-            <scope>provided</scope>
-        </dependency>
+
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.34</version>
-            <scope>provided</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.1.4</version>
         </dependency>
     </dependencies>
 
@@ -44,8 +38,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <allowedProvidedDependencies>
-                        <allowedProvidedDependency>com.google.guava:guava</allowedProvidedDependency>
-                        <allowedProvidedDependency>mysql:mysql-connector-java</allowedProvidedDependency>
+                        <allowedProvidedDependency>com.google.code.findbugs:jsr305</allowedProvidedDependency>
+                        <allowedProvidedDependency>org.postgresql:postgresql</allowedProvidedDependency>
                     </allowedProvidedDependencies>
                 </configuration>
             </plugin>
