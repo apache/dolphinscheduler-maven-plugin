@@ -69,9 +69,8 @@
         <takari.annotationProcessing>none</takari.annotationProcessing>
         <takari.transitiveDependencyReference>error</takari.transitiveDependencyReference>
         <takari.privatePackageReference>error</takari.privatePackageReference>
-
+        <skipTests>true</skipTests>
         <surefire.version>2.22.0</surefire.version>
-
         <maven.compiler.source>${takari.javaSourceVersion}</maven.compiler.source>
         <maven.compiler.target>${takari.javaSourceVersion}</maven.compiler.target>
     </properties>
@@ -316,6 +315,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${surefire.version}</version>
+                    <configuration>
+                        <skipTests>${skipTests}</skipTests>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
