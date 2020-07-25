@@ -165,6 +165,24 @@
                 <artifactId>takari-lifecycle-plugin</artifactId>
                 <extensions>true</extensions>
             </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>src</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/dolphinscheduler-src.xml</descriptor>
+                            </descriptors>
+                            <appendAssemblyId>true</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -436,6 +454,7 @@
                             <skip>true</skip>
                         </configuration>
                     </plugin>
+
                 </plugins>
             </build>
         </profile>
