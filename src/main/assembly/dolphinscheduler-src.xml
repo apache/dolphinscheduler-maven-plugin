@@ -53,11 +53,6 @@
 				<exclude>**/cobertura.ser</exclude>
 				<exclude>*.gpg</exclude>
 
-				<!-- node ignore -->
-				<exclude>**/dolphinscheduler-ui/dist/**</exclude>
-				<exclude>**/dolphinscheduler-ui/node/**</exclude>
-				<exclude>**/dolphinscheduler-ui/node_modules/**</exclude>
-
 				<!-- eclipse ignore -->
 				<exclude>**/.settings/**</exclude>
 				<exclude>**/.project</exclude>
