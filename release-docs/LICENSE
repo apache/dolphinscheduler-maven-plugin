@@ -214,11 +214,9 @@ Apache 2.0 licenses
 
 The following components are provided under the Apache License. See project link for details.
 The text of each license is the standard Apache 2.0 license.
-    DolphinDescriptorGenerator from https://github.com/prestosql/presto-maven-plugin Apache 2.0
-    SpiDependencyChecker files from https://github.com/prestosql/presto-maven-plugin Apache 2.0
-    aether-api 1.1.0:https://github.com/eclipse/aether-core/tree/master/aether-api Eclipse Public License - v 1.0
-    plexus-utils 3.0.17:https://github.com/codehaus/plexus Apache 2.0
-    maven-plugin-api 3.2.3: https://github.com/apache/maven Apache 2.0
-    maven-core: 3.2.3: https://github.com/apache/maven Apache 2.0
-    maven-artifact 3.2.3: https://github.com/apache/maven Apache 2.0
-    maven-plugin-annotations 3.2: https://github.com/apache/maven Apache 2.0
+    aether-api 1.1.0:https://github.com/eclipse/aether-core/tree/master/aether-api, Eclipse Public License - v 1.0
+    plexus-utils 3.0.17:https://github.com/codehaus/plexus, Apache 2.0
+    maven-plugin-api 3.2.3: https://github.com/apache/maven, Apache 2.0
+    maven-core: 3.2.3: https://github.com/apache/maven, Apache 2.0
+    maven-artifact 3.2.3: https://github.com/apache/maven, Apache 2.0
+    maven-plugin-annotations 3.2: https://github.com/apache/maven, Apache 2.0
