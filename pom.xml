@@ -183,6 +183,49 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <version>0.13</version>
+                <configuration>
+                    <excludeSubProjects>false</excludeSubProjects>
+                    <addDefaultLicenseMatchers>false</addDefaultLicenseMatchers>
+                    <licenses>
+                        <license implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
+                            <licenseFamilyCategory>AL20</licenseFamilyCategory>
+                            <licenseFamilyName>Apache License, 2.0</licenseFamilyName>
+                            <patterns>
+                                <pattern>Licensed to the Apache Software Foundation (ASF)</pattern>
+                            </patterns>
+                        </license>
+                    </licenses>
+                    <licenseFamilies>
+                        <licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">
+                            <familyName>Apache License, 2.0</familyName>
+                        </licenseFamily>
+                    </licenseFamilies>
+                    <excludes>
+                        <exclude>**/node_modules/**</exclude>
+                        <exclude>**/node/**</exclude>
+                        <exclude>**/dist/**</exclude>
+                        <exclude>**/licenses/**</exclude>
+                        <exclude>.github/**</exclude>
+                        <exclude>**/sql/soft_version</exclude>
+                        <exclude>**/common/utils/ScriptRunner.java</exclude>
+                        <exclude>**/*.json</exclude>
+                        <!-- document files -->
+                        <exclude>**/*.md</exclude>
+                        <excldue>**/*.MD</excldue>
+                        <exclude>**/*.txt</exclude>
+                        <exclude>**/docs/**</exclude>
+                        <exclude>**/*.babelrc</exclude>
+                        <exclude>**/*.eslintrc</exclude>
+                        <exclude>**/.mvn/jvm.config</exclude>
+                        <exclude>**/.mvn/wrapper/**</exclude>
+                    </excludes>
+                    <consoleOutput>true</consoleOutput>
+                </configuration>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
