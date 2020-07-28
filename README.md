@@ -16,7 +16,7 @@ With this maven plug-in, by scanning the pom file of the project ,The pluginload
 
 ### How to verify the release candidate
 
-1. Download the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-src.zip file from the release candidates(it will be provided in the vote email).
+1. Download the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-src.zip file from `the release candidates` (it will be provided in the vote email).
 
 2. unzip the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-src.zip file
 
