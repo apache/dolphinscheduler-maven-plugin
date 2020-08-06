@@ -27,14 +27,6 @@
 	<baseDirectory>${project.build.finalName}-bin</baseDirectory>
 
 	<fileSets>
-		<!--alert start-->
-		<fileSet>
-			<directory>${basedir}/target/dolphinscheduler-server-${project.version}</directory>
-			<includes>
-				<include>**/*.*</include>
-			</includes>
-			<outputDirectory>.</outputDirectory>
-		</fileSet>
 		<fileSet>
 			<directory>${basedir}/src/main/resources/bin</directory>
 			<includes>
