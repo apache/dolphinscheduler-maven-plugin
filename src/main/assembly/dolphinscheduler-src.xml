@@ -76,6 +76,9 @@
 				<!-- system ignore -->
 				<exclude>**/.DS_Store</exclude>
 				<exclude>**/Thumbs.db</exclude>
+
+				<!-- binary release ignore-->
+				<exclude>release-docs/**</exclude>
 			</excludes>
 		</fileSet>
 	</fileSets>

@@ -16,11 +16,11 @@ With this maven plug-in, by scanning the pom file of the project ,The pluginload
 
 ### How to verify the release candidate
 
-1. Download the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-src.zip file from `the release candidates` (it will be provided in the vote email).
+1. Download the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-bin.tar.gz file from `the release candidates` (it will be provided in the vote email).
 
-2. unzip the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-src.zip file
+2. Unzip the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-bin.tar.gz file
 
-3. cd apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-src-release and run `mvn clean install -DskipTests=true`
+3. Go to apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-bin/bin dir and run `chmod 755 install_to_localrepository.sh & sh install_to_localrepository.sh`. This will install apache-dolphinscheduler-maven-plugin to your local repository.
 
 4. add this plugin to your project`s pom.xml file like this:
 
