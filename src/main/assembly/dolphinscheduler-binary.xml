@@ -35,7 +35,7 @@
 			<outputDirectory>bin</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>${basedir}/.././</directory>
+			<directory>${basedir}/</directory>
 			<includes>
 				<include>DISCLAIMER</include>
 			</includes>
