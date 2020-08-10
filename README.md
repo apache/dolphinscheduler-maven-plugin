@@ -14,6 +14,12 @@ However, when we develop locally in IDE, we have no plug-ins dir and no plug-ins
 
 With this maven plug-in, by scanning the pom file of the project ,The pluginloader can find the module identified by <package>dolphinscheduler-plugin</package>, then can load this module`s class files and its dependent third-party jars from the target/classes dir of the plug-in module. This will debug locally
 
+### How to build
+
+`mvn clean package`
+
+And then you can found apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-bin.tar.gz in the target dir. 
+
 ### How to verify the release candidate
 
 1. Download the apache-dolphinscheduler-maven-plugin-incubating-${RELEASE.VERSION}-bin.tar.gz file from `the release candidates` (it will be provided in the vote email).
